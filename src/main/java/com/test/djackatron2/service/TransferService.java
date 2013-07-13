@@ -8,9 +8,6 @@ public class TransferService {
 			String srcAccountId, String desAccountId, double transferAmount,
 			double feeRate) {
 
-		// accountRepository.getAccount(srcAccountId).setAccountBalance(65.00d);
-		// accountRepository.getAccount(desAccountId).setAccountBalance(30.00d);
-
 		double srcAccBalance = accountRepository.getAccount(srcAccountId)
 				.getAccountBalance() - transferAmount - feeRate;
 		accountRepository.getAccount(srcAccountId).setAccountBalance(srcAccBalance);
