@@ -1,9 +1,17 @@
 package com.test.djackatron2.model;
 
 public class Account {
-
+	
 	public String accountId;
 	public double accountBalance;
+	
+	public Account() {}
+
+	public Account(String accountId, double accountBalance) {
+		super();
+		this.accountId = accountId;
+		this.accountBalance = accountBalance;
+	}
 	
 	public String getAccountId() {
 		return accountId;
@@ -18,6 +26,4 @@ public class Account {
 		this.accountBalance = accountBalance;
 	}
 	
-	
-
 }

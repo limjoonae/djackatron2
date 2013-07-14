@@ -8,4 +8,16 @@ public class AccountRepository {
 		return null;
 	}
 
+	public Account save(Account account) {
+		return null;
+	}
+
+	public Account update(Account account) {
+		return null;
+	}
+	
+	public String delete(String accountId) {
+		return null;
+	}
+
 }
