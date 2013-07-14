@@ -6,31 +6,35 @@ import org.junit.Test;
 
 public class TestFeePolicyService {
 
-	double feeActual = 5.00d;
+	CalculateFee calculateFee = new CalculateFee();
 	
 	@Test
-	public void TestTransferAmountIsOneThoundsandBaht() {
-		
-		CalculateFee calculateFee = new CalculateFee();
-		assertEquals(feeActual, calculateFee.fee(1000.00d));
+	public void testFeeRateWhenTransferAmountEqualOneThoundsandBaht() {	
+		assertEquals(0.00d, calculateFee.feeRate(1000), 0);
+	}
 
+	@Test
+	public void testFeeRateWhenTransferAmountEqualOneThoundsandAndOneBaht() {
+		assertEquals(10.01d, calculateFee.feeRate(1001), 0);
 	}
 	
 	@Test
-	public void TestTransferAmountIsTenBaht() {
-		
-		CalculateFee calculateFee = new CalculateFee();
-		assertEquals(feeActual, calculateFee.fee(10.00));
-
+	public void testFeeRateWhenTransferAmountEqualOneThoundsandAndTwoBaht() {
+		assertEquals(11.01d, calculateFee.feeRate(1002), 0);
 	}
 	
 	@Test
-	public void TestTransferAmountIsOneBaht() {
-		
-		CalculateFee calculateFee = new CalculateFee();
-		assertEquals(feeActual, calculateFee.fee(1.00));
-
+	public void testFeeRateWhenTransferAmountEqualOneMillionBaht() {
+		assertEquals(10000.00d, calculateFee.feeRate(1000000), 0);
 	}
-
 	
+	@Test
+	public void testFeeRateWhenTransferAmountEqualOneMillionAndOneBahtFail() {
+		assertEquals(10000.00d, calculateFee.feeRate(1000001), 0);
+	}
+	
+	@Test
+	public void testFeeRateWhenTransferAmountEqualOneMillionAndOneBahtPass() {
+		assertEquals(20000.00d, calculateFee.feeRate(1000001), 0);
+	}
 }

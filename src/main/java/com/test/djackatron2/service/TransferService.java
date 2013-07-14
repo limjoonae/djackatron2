@@ -1,22 +1,42 @@
 package com.test.djackatron2.service;
 
 import com.test.djackatron2.model.Account;
+import com.test.djackatron2.repository.AccountRepository;
 
 public class TransferService {
 
-	public boolean transfer(AccountRepository accountRepository,
-			String srcAccountId, String desAccountId, double transferAmount,
-			double feeRate) {
+	AccountRepository accountRepository;
 
-		double srcAccBalance = accountRepository.getAccount(srcAccountId)
-				.getAccountBalance() - transferAmount - feeRate;
-		accountRepository.getAccount(srcAccountId).setAccountBalance(srcAccBalance);
+	public void setAccountRepository(AccountRepository accountRepository) {
+		this.accountRepository = accountRepository;
+	}
 
-		double desAccBalance = accountRepository.getAccount(desAccountId)
-				.getAccountBalance() + transferAmount;
-		accountRepository.getAccount(desAccountId).setAccountBalance(desAccBalance);
+	double minTransfAmt = 0.00d; // initial value
 
+	public void setMinTransfAmt(double minTransfAmt) {
+		this.minTransfAmt = minTransfAmt;
+	}
+
+	public boolean transfer(String srcAccountId, String desAccountId,
+			double transferAmount, double feeRate) throws Exception {
+
+		if (transferAmount <= 0 || transferAmount < minTransfAmt) {
+			throw new IllegalArgumentException();
+		}
+
+		Account srcAcc = accountRepository.getAccount(srcAccountId);
+		Account desAcc = accountRepository.getAccount(desAccountId);
+
+		double srcAccBalance = srcAcc.getAccountBalance() - transferAmount
+				- feeRate;
+		accountRepository.getAccount(srcAccountId).setAccountBalance(
+				srcAccBalance);
+
+		double desAccBalance = desAcc.getAccountBalance() + transferAmount;
+		accountRepository.getAccount(desAccountId).setAccountBalance(
+				desAccBalance);
 		return true;
+
 	}
 
 }
