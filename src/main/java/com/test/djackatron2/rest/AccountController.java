@@ -7,4 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/account")
 public class AccountController {
 
+	public Account getOne(){
+		return new Account
+	}
 }
