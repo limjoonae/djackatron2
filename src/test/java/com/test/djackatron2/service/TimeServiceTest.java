@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.joda.time.LocalTime;
 import org.junit.Test;
 
-public class TestTimeService {
+public class TimeServiceTest {
 	
 	TimeService timeService = new TimeService();
 

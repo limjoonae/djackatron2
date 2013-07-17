@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.test.djackatron2.model.Account;
 import com.test.djackatron2.repository.AccountRepository;
 
-public class TestTransferService {
+public class TransferServiceTest {
 
 	// Given
 	double transferAmount = 30.00d;

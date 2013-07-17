@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestFeePolicyService {
+public class FeePolicyServiceTest {
 
 	CalculateFee calculateFee = new CalculateFee();
 	

@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.test.djackatron2.model.Account;
 import com.test.djackatron2.repository.AccountRepository;
 
-public class TestAccountController {
+public class AccountControllerTest {
 
 	@Test
 	public void testFindOne() {
